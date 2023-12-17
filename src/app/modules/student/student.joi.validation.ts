@@ -30,7 +30,7 @@ const localGuardianValidationSchema = Joi.object({
   address: Joi.string().required(),
 });
 
-const studentValidationSchema = Joi.object({
+const createStudentValidationSchema = Joi.object({
   id: Joi.string().required(),
   name: userNameValidationSchema.required(),
   gender: Joi.string().valid('male', 'female', 'other').required(),
@@ -49,5 +49,4 @@ const studentValidationSchema = Joi.object({
   isActive: Joi.string().valid('active', 'blocked').default('active'),
 });
 
-
-export default studentValidationSchema
+export default createStudentValidationSchema;

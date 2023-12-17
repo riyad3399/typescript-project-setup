@@ -8,6 +8,7 @@ const userSchema = new Schema<TUser>(
     id: {
       type: String,
       required: true,
+      unique: true,
     },
     password: {
       type: String,
@@ -45,10 +46,9 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-userSchema.post('save',  function (doc, next) {
+userSchema.post('save', function (doc, next) {
   // eslint-disable-next-line no-unused-expressions
-  doc.password = "",
-    next()
+  (doc.password = ''), next();
 });
 
 export const User = model<TUser>('user', userSchema);
